@@ -1,0 +1,9 @@
+name = "sipa-community"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+account_id = "fe595a27fb6983a5ccfbd2840f1bec97"
+
+[env.production]
+routes = [
+  { pattern = "community.sipa-os.org/*", zone_name = "sipa-os.org" }
+]
