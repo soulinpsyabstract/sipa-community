@@ -6,7 +6,7 @@ const HTML = `<!DOCTYPE html>
 <title>SIPA Community — Neurodiverse Builders</title>
 <meta name="description" content="Connect with neurodiverse builders. Share progress, find co-founders, discover open-source projects, blog and vlog. Your tribe, your protocol." />
 <meta property="og:title" content="SIPA Community" />
-<meta property="og:description" content="Neurodiverse builders platform. Q4 2026." />
+<meta property="og:description" content="Neurodiverse builders platform. Live on Discord now." />
 <meta property="og:image" content="https://ai.sipa-os.org/og.png" />
 <link rel="icon" href="https://ai.sipa-os.org/favicon.ico" />
 <style>
@@ -81,12 +81,12 @@ const HTML = `<!DOCTYPE html>
 
 <!-- Hero -->
 <section class="hero">
-  <div class="badge">// Q4 2026 · Coming Soon</div>
+  <div class="badge">// Live now</div>
   <h1>Your tribe,<br /><span>your protocol</span></h1>
-  <p class="sub">A platform for neurodiverse builders. Share progress, find co-founders, discover open-source, write blogs &amp; vlogs. Built on SIPA OS — non-lying, privacy-first, open stack.</p>
+  <p class="sub">A community for neurodiverse builders. Share progress, find co-founders, discover open-source, talk shop. Built on SIPA OS — non-lying, privacy-first, open stack.</p>
   <div class="cta-row">
-    <a class="btn-primary" href="https://ai.sipa-os.org">Try SIPA AI →</a>
-    <a class="btn-outline" href="https://github.com/soulinpsyabstract/sipa-community" target="_blank">GitHub Repo ↗</a>
+    <a class="btn-primary" href="https://discord.gg/WSVrZk3v4" target="_blank">Join Discord →</a>
+    <a class="btn-outline" href="https://blog.sipa-os.org" target="_blank">Read the Blog ↗</a>
   </div>
 
   <!-- Features grid -->
@@ -113,15 +113,12 @@ const HTML = `<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- Notify -->
+  <!-- Join -->
   <div class="notify">
-    <span class="notify-label">// get notified when we launch</span>
-    <div class="notify-row">
-      <input type="email" id="email-input" placeholder="your@email.com" />
-      <button onclick="notify()">Notify me</button>
+    <span class="notify-label">// join the conversation</span>
+    <div class="cta-row" style="margin-top:0">
+      <a class="btn-primary" href="https://discord.gg/WSVrZk3v4" target="_blank" style="width:100%; text-align:center;">Join SIPA OS on Discord →</a>
     </div>
-    <div class="notify-note">No spam. One email when Community goes live.</div>
-    <div class="success-msg" id="success-msg">✓ Saved — we'll ping you at launch.</div>
   </div>
 </section>
 
@@ -132,22 +129,6 @@ const HTML = `<!DOCTYPE html>
   <br /><br />
   SIPA OS · Soul In PsyAbstract LLC · community.sipa-os.org
 </footer>
-
-<script>
-async function notify() {
-  const email = document.getElementById('email-input').value.trim();
-  if (!email || !email.includes('@')) return;
-  try {
-    await fetch('https://api.sipa-os.org/community/notify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, ts: new Date().toISOString() })
-    });
-  } catch(_) {}
-  document.getElementById('success-msg').style.display = 'block';
-  document.getElementById('email-input').value = '';
-}
-</script>
 </body>
 </html>`;
 
