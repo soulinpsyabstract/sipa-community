@@ -5,7 +5,7 @@ export function Avatar({ name, url, size = 32 }: { name: string; url?: string | 
         src={url}
         alt={name}
         style={{ width: size, height: size }}
-        className="rounded-none object-cover border border-border2"
+        className="rounded-full object-cover border border-border2"
       />
     );
   }
@@ -13,7 +13,7 @@ export function Avatar({ name, url, size = 32 }: { name: string; url?: string | 
   return (
     <div
       style={{ width: size, height: size }}
-      className="flex items-center justify-center bg-panel2 border border-border2 text-accent text-xs font-bold"
+      className="flex items-center justify-center rounded-full bg-accent/20 text-accent text-xs font-semibold"
     >
       {initial}
     </div>
@@ -30,7 +30,7 @@ export function StatusDot({ isOnline }: { isOnline: boolean }) {
 
 export function AppTag({ app }: { app: string }) {
   return (
-    <span className="text-[10px] uppercase tracking-wider text-muted border border-border px-1.5 py-0.5">
+    <span className="text-[10px] uppercase tracking-wider text-muted bg-panel2 rounded-full px-2.5 py-1">
       {app}
     </span>
   );

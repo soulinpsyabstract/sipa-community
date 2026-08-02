@@ -42,6 +42,14 @@ export type FeedReaction = {
   created_at: string;
 };
 
+export type FeedComment = {
+  id: string;
+  post_id: string;
+  author_id: string;
+  body: string;
+  created_at: string;
+};
+
 export type PresenceState = {
   id: string;
   name: string;

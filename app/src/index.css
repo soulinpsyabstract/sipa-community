@@ -2,13 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #3e4145 transparent;
+}
+
+html {
+  color-scheme: dark;
+}
+
 body {
-  background: #0a0a0a;
-  color: #fff;
-  font-family: 'SF Mono', 'Fira Code', monospace;
+  background-color: #16181c;
+  color: #e7e9ea;
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   margin: 0;
 }
+
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #3e4145; border-radius: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
+
+.online-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  border: 2px solid #16181c;
+  flex-shrink: 0;
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #3e4145 transparent;
+}
+.scroll-thin::-webkit-scrollbar { width: 6px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: #3e4145; border-radius: 999px; }
+.scroll-thin::-webkit-scrollbar-track { background: transparent; }
+
+input::placeholder,
+textarea::placeholder {
+  color: #71767b;
+}
+
+::selection {
+  background-color: rgba(29, 155, 240, 0.35);
+  color: #ffffff;
+}
+
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+@media (max-width: 1023px) {
+  button, a { min-height: 40px; }
+}
+
+html, body, #root {
+  overflow-x: hidden;
+}
+
+.bubble-out {
+  background-color: #1d9bf0;
+  color: #ffffff;
+  border-radius: 18px;
+  border-bottom-right-radius: 6px;
+}
+
+.bubble-in {
+  background-color: #26282d;
+  color: #e7e9ea;
+  border-radius: 18px;
+  border-bottom-left-radius: 6px;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fade-in-up 200ms ease-out both; }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in { animation: fade-in 200ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
