@@ -10,26 +10,40 @@ import UserProfileView from './pages/UserProfileView';
 import FriendsPage from './pages/FriendsPage';
 import OnlineUsersPage from './pages/OnlineUsersPage';
 import DMConversationList from './pages/DMConversationList';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
 
 function Shell() {
   return (
     <BrowserRouter>
-      <AuthGate>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<DMConversationList />} />
-            <Route path="/channel/:channelName" element={<ChatView />} />
-            <Route path="/dm/:userId" element={<ChatView />} />
-            <Route path="/group/:groupId" element={<ChatView />} />
-            <Route path="/feed" element={<FeedView />} />
-            <Route path="/profile" element={<ProfileView />} />
-            <Route path="/user/:userId" element={<UserProfileView />} />
-            <Route path="/friends" element={<FriendsPage />} />
-            <Route path="/online" element={<OnlineUsersPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
-      </AuthGate>
+      <Routes>
+        {/* Public — must be viewable without logging in */}
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
+
+        {/* Everything else requires auth */}
+        <Route
+          path="*"
+          element={
+            <AuthGate>
+              <Routes>
+                <Route element={<Layout />}>
+                  <Route path="/" element={<DMConversationList />} />
+                  <Route path="/channel/:channelName" element={<ChatView />} />
+                  <Route path="/dm/:userId" element={<ChatView />} />
+                  <Route path="/group/:groupId" element={<ChatView />} />
+                  <Route path="/feed" element={<FeedView />} />
+                  <Route path="/profile" element={<ProfileView />} />
+                  <Route path="/user/:userId" element={<UserProfileView />} />
+                  <Route path="/friends" element={<FriendsPage />} />
+                  <Route path="/online" element={<OnlineUsersPage />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Route>
+              </Routes>
+            </AuthGate>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }

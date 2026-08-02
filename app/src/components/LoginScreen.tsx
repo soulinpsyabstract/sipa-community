@@ -76,6 +76,10 @@ export function LoginScreen() {
           </a>
         ))}
       </footer>
+      <div className="flex gap-4 text-[11px] text-muted">
+        <a href="/terms" className="hover:text-white transition-colors">Terms</a>
+        <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
+      </div>
     </div>
   );
 }
